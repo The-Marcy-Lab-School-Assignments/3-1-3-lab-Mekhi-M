@@ -3,34 +3,36 @@ import {
   renderAuthorInfo,
   renderNewUserForm,
   renderNewUser,
-} from './render-functions.js';
+} from "./render-functions.js";
 import {
   getFirstThreeFantasyBooks,
   getAuthor,
   createNewUser,
-} from './fetch-functions.js';
+} from "./fetch-functions.js";
 
 export default async function app(appDiv) {
-  const bookListEl = document.createElement('ul');
-  bookListEl.id = 'book-list';
+  const bookListEl = document.createElement("ul");
+  bookListEl.id = "book-list";
   appDiv.append(bookListEl);
 
-  const authorInfoEl = document.createElement('div');
-  authorInfoEl.id = 'author-info';
+  const authorInfoEl = document.createElement("div");
+  authorInfoEl.id = "author-info";
   appDiv.append(authorInfoEl);
 
-  const newUserEl = document.createElement('div');
-  newUserEl.id = 'new-user';
+  const newUserEl = document.createElement("div");
+  newUserEl.id = "new-user";
   appDiv.append(newUserEl);
 
-  const newUserFormEl = document.createElement('form');
-  newUserFormEl.id = 'new-user-form';
+  const newUserFormEl = document.createElement("form");
+  newUserFormEl.id = "new-user-form";
   appDiv.append(newUserFormEl);
   // Render the form!
   // renderNewUserForm;
 
   // Fetch the books!
-  // const books =
+  const books = getFirstThreeFantasyBooks();
+  // console.log(books);
+
   // render out the books
   // renderBookList
 
