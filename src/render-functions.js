@@ -23,7 +23,28 @@ export const renderBookList = (bookListEl, books) => {
   }
 };
 
-export const renderAuthorInfo = (authorInfoEl, author) => {};
+export const renderAuthorInfo = (authorInfoEl, author) => {
+  authorInfoEl.replaceChildren();
+
+  const h2 = document.createElement("h2");
+  const img = document.createElement("img");
+  const pBirthDate = document.createElement("p");
+  const pBio = document.createElement("p");
+  const a = document.createElement("a");
+
+  // attribute setting
+  img.src = author.pictureUrl;
+  img.alt = `A picture of ${author.name}`;
+  a.href = author.wikipediaUrl;
+
+  // content
+  h2.textContent = author.name;
+  pBirthDate.textContent = `Born: ${author.birthDate}`;
+  pBio.textContent = author.bio;
+  a.textContent = `Wikipedia Link`;
+
+  authorInfoEl.append(h2, img, pBirthDate, pBio, a);
+};
 
 export const renderNewUserForm = (newUserFormEl) => {};
 

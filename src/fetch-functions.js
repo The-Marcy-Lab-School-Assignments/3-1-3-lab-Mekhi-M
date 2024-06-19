@@ -1,5 +1,6 @@
 export const getFirstThreeFantasyBooks = async () => {
   const url = `https://openlibrary.org/subjects/fantasy.json`;
+
   try {
     const response = await fetch(url);
 
@@ -31,6 +32,32 @@ export const getFirstThreeFantasyBooks = async () => {
   }
 };
 
-export const getAuthor = () => {};
+export const getAuthor = async (urlKey) => {
+  const url = `https://openlibrary.org${urlKey}.json`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Failed to get author");
+    }
+
+    const author = await response.json();
+    // console.log(author);
+
+    const reformattedAuthor = {
+      birthDate: author["birth_date"],
+      bio: author["bio"],
+      wikipediaUrl: author["wikipedia"],
+      name: author["name"],
+      pictureUrl: `https://covers.openlibrary.org/a/id/${author["photos"][0]}-M.jpg`,
+    };
+
+    return reformattedAuthor;
+  } catch (error) {
+    console.warn(error.message);
+    return null;
+  }
+};
 
 export const createNewUser = () => {};
