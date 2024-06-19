@@ -112,4 +112,22 @@ export const renderNewUserForm = (newUserFormEl) => {
   );
 };
 
-export const renderNewUser = (newUserEl, newUser) => {};
+export const renderNewUser = (newUserEl, newUser) => {
+  newUserEl.replaceChildren();
+
+  const h2 = document.createElement("h2");
+  const pIsCool = document.createElement("p");
+  const pFavLang = document.createElement("p");
+
+  // attribute setting
+  h2.dataset.userId = newUser.id;
+
+  // content
+  h2.textContent = newUser.username;
+  pIsCool.textContent = newUser.isCool
+    ? "The hippest in the house!"
+    : "A real square.";
+  pFavLang.textContent = `Favorite Language: ${newUser.favoriteLanguage}`;
+
+  newUserEl.append(h2, pIsCool, pFavLang);
+};
