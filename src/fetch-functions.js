@@ -43,7 +43,6 @@ export const getAuthor = async (urlKey) => {
     }
 
     const author = await response.json();
-    // console.log(author);
 
     const reformattedAuthor = {
       birthDate: author["birth_date"],
@@ -60,4 +59,27 @@ export const getAuthor = async (urlKey) => {
   }
 };
 
-export const createNewUser = () => {};
+export const createNewUser = async (newUserObj) => {
+  const url = `https://jsonplaceholder.typicode.com/users`;
+
+  const postOption = {
+    method: "POST",
+    body: JSON.stringify(newUserObj),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const response = await fetch(url, postOption);
+
+    if (!response.ok) {
+      throw new Error("Failed to create new user");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.warn(error.message);
+    return null;
+  }
+};

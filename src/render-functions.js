@@ -46,6 +46,70 @@ export const renderAuthorInfo = (authorInfoEl, author) => {
   authorInfoEl.append(h2, img, pBirthDate, pBio, a);
 };
 
-export const renderNewUserForm = (newUserFormEl) => {};
+export const renderNewUserForm = (newUserFormEl) => {
+  const labelUsername = document.createElement("label");
+  const inputUsername = document.createElement("input");
+  const labelIsCool = document.createElement("label");
+  const inputIsCool = document.createElement("input");
+  const labelFavLang = document.createElement("label");
+  const inputFavLang = document.createElement("select");
+  const optionLang0 = document.createElement("option");
+  const optionLang1 = document.createElement("option");
+  const optionLang2 = document.createElement("option");
+  const optionLang3 = document.createElement("option");
+  const button = document.createElement("button");
+
+  // structure elements
+  inputFavLang.append(optionLang0, optionLang1, optionLang2, optionLang3);
+
+  // attribute setting
+  // username text
+  labelUsername.htmlFor = "username";
+
+  inputUsername.type = "text";
+  inputUsername.id = "username";
+  inputUsername.name = "username";
+  // ----------------------------------------------------
+
+  // is cool checkbox
+  labelIsCool.htmlFor = "is-cool";
+
+  inputIsCool.type = "checkbox";
+  inputIsCool.id = "is-cool";
+  inputIsCool.name = "isCool";
+  // ----------------------------------------------------
+
+  // fav lang dropdown
+  labelFavLang.htmlFor = "favorite-language";
+
+  inputFavLang.id = "favorite-language";
+  inputFavLang.name = "favoriteLanguage";
+
+  optionLang0.value = "None";
+  optionLang1.value = "JavaScript";
+  optionLang2.value = "Python";
+  optionLang3.value = "Ruby";
+  // ----------------------------------------------------
+
+  // content
+  labelUsername.textContent = "Username";
+  labelIsCool.textContent = "Is this user cool?";
+  labelFavLang.textContent = "Favorite Language";
+  optionLang0.textContent = "None";
+  optionLang1.textContent = "JavaScript";
+  optionLang2.textContent = "Python";
+  optionLang3.textContent = "Ruby";
+  button.textContent = "Create User";
+
+  newUserFormEl.append(
+    labelUsername,
+    inputUsername,
+    labelIsCool,
+    inputIsCool,
+    labelFavLang,
+    inputFavLang,
+    button
+  );
+};
 
 export const renderNewUser = (newUserEl, newUser) => {};
